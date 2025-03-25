@@ -2,12 +2,18 @@
 
 #include <iostream>
 #include <conio.h>
-#include <windows.h>
+//#include <windows.h>
 #include <string>
 
 int main(int argc, char *argv[])
 {
-    SetConsoleOutputCP(CP_UTF8);
+    //SetConsoleOutputCP(CP_UTF8);
+    setlocale(LC_ALL, "ru_RU.utf8");
+    //system("chcp 65001"); // Устанавливаем кодовую страницу UTF-8
+    //setlocale(LC_ALL, "Russian");
+    //system("chcp 1251");
+
+
     std::cout << "\033[2J\033[H"; // Очистка экрана и перемещение курсора
 
     char str1[] = "qwerty", str2[] = "1234567890";
@@ -82,13 +88,11 @@ int dlina2(char *str)
 // через рекурсию
 int dlina3(char *str)
 {
-    int count = 0;
     if (*str == '\0')
     {
         return 0;
     }
     return 1 + dlina3(str + 1);
-    return count;
 }
 
 void kopir(char *str1, char *str2)
@@ -97,9 +101,10 @@ void kopir(char *str1, char *str2)
     int count = 0;
     while (str2[count] != '\0')
     {
-        str1[count] = str2[count];
+        str1[count] = str2[count]; //Тут бы конечно посмотреть на размеры массивов и выделить память, еслии её не хватит, но реализуем банальную ситуацию
         count++;
     }
+    str1[count]='\0';
 }
 
 void sravn(char *str1, char *str2)
@@ -108,7 +113,7 @@ void sravn(char *str1, char *str2)
     int count = 0;
     while (str2[count] != '\0')
     {
-        if (str1[count] == str2[count])
+        if (str1[count] == str2[count]) //Тут бы конечно посмотреть на указатели, вдруг ониодинаковые
         {
             count++;
         }
@@ -119,7 +124,7 @@ void sravn(char *str1, char *str2)
 
         }
     }
-    std::cout << "Строки одинаковые\n";
+    std::cout << "Строки одинаковые\n"; //В задаче непонятны условия, можеть быть еще их нужно было сранивать по размеру?
 }
 
 void konkat(char *str1, char *str2)
@@ -134,8 +139,9 @@ void konkat(char *str1, char *str2)
     int count2 = 0;
     while (str2[count2] != '\0')
     {
-        str1[count1+count2]=str2[count2];
-        count2++;
+        str1[count1-1+count2]=str2[count2]; //Тут бы конечно посмотреть на размеры массивов и выделить память, еслии её не хватит, но реализуем банальную сиитуацию
+        count2++;                           
     }
+    str1[count1+count2+1]='\0';
 
 }

@@ -1,68 +1,67 @@
-// Задача 4
+// Задача 5
 
 #include <iostream>
 #include <conio.h>
-// #include <windows.h>
 #include <string>
 #include <cstring>
 
 int main(int argc, char *argv[])
 {
-    // SetConsoleOutputCP(CP_UTF8);
     setlocale(LC_ALL, "ru_RU.utf8");
     std::cout << "\033[2J\033[H"; // Очистка экрана и перемещение курсора
 
     char A[] = "qwerty", B[] = "1234567890";
+    char C[] = "йцукенгшщзхъ";
 
-    char *str1, *str2;
+    // Создаем массив строк
+    const int ARRAY_SIZE = 3;
+    char **arrStrings = new char *[ARRAY_SIZE];
+    arrStrings[0] = (char *)calloc(100, sizeof(char));
+    arrStrings[1] = (char *)calloc(100, sizeof(char));
+    arrStrings[2] = (char *)calloc(100, sizeof(char));
 
-    // Странно что применяется malloc и calloc, а не new 
-    str1 = (char *)malloc(100); // Выделяем память
-    str2 = (char *)malloc(100);
+    char *str1, *str2, *str3;
+
+    // Странно что применяется malloc и calloc, а не new
+    str1 = (char *)calloc(100, sizeof(char)); // Выделяем память
+    str2 = (char *)calloc(100, sizeof(char));
 
     int dlina1(char *);
     int dlina2(char *);
     int dlina3(char *);
+    int dlina4(char *);
     void kopir(char *, char *);
     void sravn(char *, char *);
     void konkat(char *, char *);
 
-    kopir(A, str1);
-    kopir(B, str2);
-    std::cout << "результат копирования: str1=" << str1;
-    std::cout << " str2=" << str2;
-    std::cout << std::endl;
+    kopir(A, arrStrings[0]);
+    kopir(B, arrStrings[1]);
+    kopir(C, arrStrings[2]);
 
-    std::cout << "Вычисление длины функция while \n";
-    std::cout << "длина str1=" << dlina1(str1);
-    std::cout << " str2=" << dlina1(str2);
-    std::cout << std::endl;
-
-    std::cout << "Вычисление длины функция for \n";
-    std::cout << "длина str1=" << dlina2(str1);
-    std::cout << " str2=" << dlina2(str2);
-    std::cout << std::endl;
-
-    std::cout << "Вычисление длины функция рекурсии \n";
-    std::cout << "длина str1=" << dlina3(str1);
-    std::cout << " str2=" << dlina3(str2);
-    std::cout << std::endl;
-
-    // вызов sravn(char *, char *)
-    sravn(str1, str2);
-    std::cout << "результат сравнения: str1=" << str1;
-    std::cout << " str2=" << str2;
-    std::cout << std::endl;
-
-    // вызов konkat(char *, char *)
-    konkat(str1, str2);
-    std::cout << "результат сцепления: str1=" << str1;
-    std::cout << " str2=" << str2;
-    std::cout << std::endl;
+    for (int i = 0; i < ARRAY_SIZE; i++)
+    {
+        std::cout << "Длина 1 "<< dlina1(arrStrings[i]);
+        std::cout << std::endl;
+        std::cout <<"Длина 2 "<< dlina2(arrStrings[i]);
+        std::cout << std::endl;
+        std::cout <<"Длина 3 "<< dlina3(arrStrings[i]);
+        std::cout << std::endl;
+        std::cout <<"Длина 4 "<< dlina4(arrStrings[i]);
+        std::cout << std::endl;
+        if (i + 1 == ARRAY_SIZE)
+        {
+            sravn(arrStrings[i], arrStrings[0]);
+            konkat(arrStrings[i], arrStrings[0]);
+        }
+        else
+        {
+            sravn(arrStrings[i], arrStrings[i + 1]);
+            konkat(arrStrings[i], arrStrings[i + 1]);
+        }
+    }
 
     // Странно что применяется free, а не delete
-    free(str1);
-    free(str2);
+    free(arrStrings);
 
     return 0;
 }
@@ -108,7 +107,7 @@ int dlina3(char *str)
     return 1 + dlina3(str + 1);
 }
 // используем математику указателей
-int dllna4(char *str)
+int dlina4(char *str)
 {
     char *ptr = str;
     while (*ptr != '\0')
@@ -218,11 +217,9 @@ void konkat(char *str1, char *str2) // Копируем str2 в str1
         ptrResult[dlinaStr1 + i] = str2[i];
     }
 
-    ptrResult[dlinaResult-1] = '\0';
-    
+    ptrResult[dlinaResult - 1] = '\0';
+
     std::cout << ptrResult;
     std::cout << std::endl;
     free(ptrResult);
-
-
 }
