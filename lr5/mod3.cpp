@@ -1,4 +1,4 @@
-// Задача 2
+// Задача 3
 
 #include <iostream>
 #include <stdio.h>
