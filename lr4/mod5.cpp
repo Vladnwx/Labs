@@ -86,11 +86,10 @@ int dlina2(char *str)
 {
     if (str == NULL)
     { // Проверка что указатель не нулевой
-        return 1;
+        return 0;
     }
     size_t count = 0; // Используем платформенно зависимый счетчик
-    for (count; str[count] != '\0'; count++)
-        ;
+    for (count; str[count] != '\0'; count++);
     return (int)count;
 }
 // через рекурсию
