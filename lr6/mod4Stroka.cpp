@@ -40,25 +40,20 @@ Stroka::~Stroka()
 Stroka &Stroka::operator=(const Stroka &s)
 {
     // std::cout << "\nОператор присваивания";
-    if (this != &s)
-    {
-        delete[] str;
-        str = new char[strlen(s.str) + 1];
-        strcpy(str, s.str);
-    }
+    str = new char[strlen(s.str) + 1];
+    strcpy(str, s.str);
     return *this;
 }
 
 // Оператор сложения (конкатенации)
 Stroka &Stroka::operator+(const Stroka &s)
 {
-    std::cout << "\nконкатенация";
+    //std::cout << "\nконкатенация";
     // Вычисляем общий размер
     int new_size = dlina() + strlen(s.str) + 1;
     char* new_ptr = new char[new_size];
     strcpy(new_ptr, str);
     strcat(new_ptr, s.str);
-    s(*new_ptr);
     return *this;
 }
 
