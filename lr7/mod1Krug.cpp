@@ -1,5 +1,6 @@
 #include "mod1Krug.h"
-void Krug::Init(int XN, int YN, std::string R, std::string Color)
+void Krug::Init(int XN, int YN, 
+    unsigned short R, unsigned short Color)
 {
     Point::Init(XN, YN, Color);
     Radius = R;
@@ -8,14 +9,14 @@ void Krug::Init(int XN, int YN, std::string R, std::string Color)
 
 void Krug::Show()
 {
-    SetColor(Cvet);
-    SetFillStyle (1, Cvet);
-    Pieslice(X, Y, 0, 320, Radius);
+    setcolor(Cvet);
+    setfillstyle (1, Cvet);
+    pieslice(X, Y, 0, 320, Radius);
 }
 
 void Krug::Hide()
 {
-    SetColor(GetBkColor);
-    SetFillStyle (1, GetBkColor);
-    Pieslice(X, Y, 0, 320, Radius);
+    setcolor(getbkcolor());
+    setfillstyle (1, getbkcolor());
+    pieslice(X, Y, 0, 320, Radius);
 }

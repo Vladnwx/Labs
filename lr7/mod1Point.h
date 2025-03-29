@@ -1,15 +1,21 @@
 #pragma once
 #include <string>
+#include <conio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "graphics.h"
+#include "winbgim.h"
 class Point
 {
 protected:
     int X, Y;
-    std::string Cvet;
+    unsigned short  Cvet;
 
 public:
-    void Init(int XN, int YN, std::string Color);
+    void Init(int XN, int YN, unsigned short  Color);
     virtual void Show();
     virtual void Hide();
-    void Locat(int XL, int YL);
+    virtual ~Point() = default;
+    void Locat(int &XL, int &YL);
     void Fly(int Cost);
 };

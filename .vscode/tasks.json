@@ -1,4 +1,5 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "cppbuild",
@@ -8,22 +9,47 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                //"*.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
-            "problemMatcher": [
-                "$gcc"
+            "problemMatcher": ["$gcc"],
+            "group": "build",
+            "detail": "Задача создана отладчиком."
+        },
+        {
+            "label": "Build lr7 mod1",
+            "type": "cppbuild",
+            "command": "C:\\TDM-GCC-32\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}\\lr7\\mod1.cpp",
+                "${workspaceFolder}\\lr7\\mod1Point.cpp",
+                "${workspaceFolder}\\lr7\\mod1Krug.cpp",
+                "${workspaceFolder}\\lr7\\mod1Ring.cpp",
+                "-I${workspaceFolder}\\lr7",
+                "-L${workspaceFolder}\\lr7",
+                "-lbgi",
+                "-lgdi32",
+                "-lcomdlg32",
+                "-luuid",
+                "-loleaut32",
+                "-lole32",
+                "-o",
+                "${workspaceFolder}\\lr7\\mod1.exe"
             ],
+            "options": {
+                "cwd": "${workspaceFolder}\\lr7"
+            },
+            "problemMatcher": ["$gcc"],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Задача создана отладчиком."
+            "detail": "Build lr7 mod1"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
