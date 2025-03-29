@@ -3,85 +3,50 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe сборка активного файла",
-            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "label": "🔧 C/C++: g++ build active file",
+            "command": "g++",
             "args": [
-                "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": ["$gcc"],
-            "group": "build",
-            "detail": "Задача создана отладчиком."
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "компилятор: g++"
         },
         {
-            "label": "Build lr7 mod1",
-            "type": "cppbuild",
-            "command": "C:\\TDM-GCC-32\\bin\\g++.exe",
+            "type": "shell",
+            "label": "🔨 Сборка всех .cpp файлов в папке",
+            "command": "g++",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${workspaceFolder}\\lr7\\mod1.cpp",
-                "${workspaceFolder}\\lr7\\mod1Point.cpp",
-                "${workspaceFolder}\\lr7\\mod1Krug.cpp",
-                "${workspaceFolder}\\lr7\\mod1Ring.cpp",
-                "-I${workspaceFolder}\\lr7",
-                "-L${workspaceFolder}\\lr7",
-                "-lbgi",
-                "-lgdi32",
-                "-lcomdlg32",
-                "-luuid",
-                "-loleaut32",
-                "-lole32",
+                "${workspaceFolder}/**/*.cpp",
+                "-I${workspaceFolder}",
                 "-o",
-                "${workspaceFolder}\\lr7\\mod1.exe"
+                "${workspaceFolder}/${workspaceFolderBasename}.exe"
             ],
             "options": {
-                "cwd": "${workspaceFolder}\\lr7"
+                "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": ["$gcc"],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Build lr7 mod1"
-        }
-        {
-            "label": "Build lr7 mod2",
-            "type": "cppbuild",
-            "command": "C:\\TDM-GCC-32\\bin\\g++.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${workspaceFolder}\\lr7\\mod2.cpp",
-                "${workspaceFolder}\\lr7\\mod1Point.cpp",
-                "${workspaceFolder}\\lr7\\mod1Krug.cpp",
-                "${workspaceFolder}\\lr7\\mod1Ring.cpp",
-                "-I${workspaceFolder}\\lr7",
-                "-L${workspaceFolder}\\lr7",
-                "-lbgi",
-                "-lgdi32",
-                "-lcomdlg32",
-                "-luuid",
-                "-loleaut32",
-                "-lole32",
-                "-o",
-                "${workspaceFolder}\\lr7\\mod2.exe"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}\\lr7"
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
             },
-            "problemMatcher": ["$gcc"],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "Build lr7 mod2"
+            "problemMatcher": []
         }
     ]
 }
