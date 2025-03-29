@@ -18,4 +18,5 @@ public:
     virtual ~Point() = default;
     void Locat(int &XL, int &YL);
     void Fly(int Cost);
+    void SectorColor(int Cost);
 };

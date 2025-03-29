@@ -51,5 +51,37 @@
             },
             "detail": "Build lr7 mod1"
         }
+        {
+            "label": "Build lr7 mod2",
+            "type": "cppbuild",
+            "command": "C:\\TDM-GCC-32\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}\\lr7\\mod2.cpp",
+                "${workspaceFolder}\\lr7\\mod1Point.cpp",
+                "${workspaceFolder}\\lr7\\mod1Krug.cpp",
+                "${workspaceFolder}\\lr7\\mod1Ring.cpp",
+                "-I${workspaceFolder}\\lr7",
+                "-L${workspaceFolder}\\lr7",
+                "-lbgi",
+                "-lgdi32",
+                "-lcomdlg32",
+                "-luuid",
+                "-loleaut32",
+                "-lole32",
+                "-o",
+                "${workspaceFolder}\\lr7\\mod2.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\lr7"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build lr7 mod2"
+        }
     ]
 }
