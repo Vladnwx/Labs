@@ -52,6 +52,7 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "algorithm": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "sstream": "cpp"
     }
 }
