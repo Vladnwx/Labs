@@ -214,8 +214,10 @@ public:
 
 };
 
-int main()
+int main(int argc, char *argv[])
 {
+    std::setlocale(LC_ALL, "ru_RU.utf8");
+    std::cout << "\033[2J\033[H"; // Очистка экрана и перемещение курсора
     LinkedList<int> list;
     list.push_back(1);
     list.push_front(0);
